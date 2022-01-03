@@ -1,6 +1,6 @@
 #coding=utf-8
 from socket import *
-serverName='127.0.0.1'
+serverName='172.24.89.254'
 serverPort=12000
 clientSocket=socket(AF_INET,SOCK_STREAM)
 clientSocket.connect((serverName,serverPort))
@@ -8,14 +8,14 @@ content=r"/E/test.html"
 
 def AddContentToMessage(str):
     return '''GET '''+str+''' HTTP/1.1
-Host: 127.0.0.1
+Host: 172.24.89.254
 Connection: keep-alive
 Accept: text/html
 User-Agent: Mozilla/5.0
 Accept-Encoding: gzip, deflate
 Accept-Language: zh-cn,en-us'''
 
-content = r"\State"
+content = r"/State"
 requestMessage=AddContentToMessage(content)
 
 requestMessage=requestMessage.encode('utf-8')

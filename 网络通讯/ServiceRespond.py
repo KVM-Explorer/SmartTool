@@ -2,6 +2,7 @@
 from socket import *
 import codecs
 import datetime
+import time as t
 #解析请求报文的请求形象路径
 def findPath(str):
     try:
@@ -90,9 +91,15 @@ while 1:
     sentence=connectionSocket.recv(1024)#sentence是从客户端发送的请求报文
     path=findPath(sentence)
     
-    if path==2:
+    text="1,2,3,4,5".encode()
+    result = connectionSocket.send(text)
+    print("Send Code:"+str(result))
+    #connectionSocket.send('404 Not Found'.encode())
+    '''
+    #if path==2:
         text="1,2,3,4,5".encode()
         connectionSocket.send(text)
+    
     elif path==1:
         connectionSocket.send('404 Not Found'.encode())#被请求文档不在服务器上
         # connectionSocket.send('400 Bad Request')#该请求不能被服务器理解
@@ -105,7 +112,8 @@ while 1:
         reuestMessage=responseMessageHead(text)+text
         reuestMessage=reuestMessage.encode('utf-8')
         connectionSocket.send(reuestMessage)
-    connectionSocket.close()
+    '''
+    #connectionSocket.close()
     print('The online client is as follows:')
     print('Client\'s IP is:',addr[0],',','client\'s port is',addr[1],'\n')
     print('The client\'s request message is as follows:')
