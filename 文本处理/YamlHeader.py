@@ -39,7 +39,7 @@ def SearchMarkDown(current_path):
         header['title'] = name
         header['toc'] = True
         header['date'] = get_FileCreateTime(path)
-        print(header)
+        # print(header)
         text = "---\n"+yaml.dump(header,allow_unicode=True)+"---\n" + text
         # print(yaml.dump(header,allow_unicode=True,encoding='utf-8'))
         path.write_text(text)
